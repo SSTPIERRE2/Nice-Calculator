@@ -2,6 +2,7 @@
   "name": "nice-calculator",
   "version": "0.1.0",
   "private": true,
+  "homePage": "https://sstpierre2.github.io/Nice-Calculator",
   "dependencies": {
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
@@ -11,9 +12,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preDeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "gh-pages": "^1.1.0"
   }
 }
