@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/style.css';
-import { InputDisplay, NumButton } from './';
+import { InputDisplay, NumpadButton } from './';
+import { renderNumpadButtons } from '../utils';
 
 class Calculator extends Component {
 	state = {
@@ -21,15 +22,7 @@ class Calculator extends Component {
 		        </div>
 
 	            <div className="row">
-		        	<div className="col-sm-4 col-md-4 col-lg-4">
-		        		<NumButton display="7" onClick={this.updateDisplay} />
-		            </div>
-		            <div className="col-sm-4 col-md-4 col-lg-4">
-		              <NumButton display="8" onClick={this.updateDisplay} />
-		            </div>
-		            <div className="col-sm-4 col-md-4 col-lg-4">
-		              <NumButton display="9" onClick={this.updateDisplay} />
-		            </div>
+		        	{renderNumpadButtons({ display: [7, 8, 9], onClick: this.updateDisplay })}
 		        </div>
 			</div>
 		);

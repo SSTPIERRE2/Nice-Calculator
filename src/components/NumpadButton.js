@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NumButton = (props) => {
+const NumpadButton = (props) => {
 	return (
 		<div className="numpad-btn" onClick={() => props.onClick(props.display)}>
 			{props.display}
@@ -8,4 +8,4 @@ const NumButton = (props) => {
 	);
 }
 
-export { NumButton };
+export { NumpadButton };

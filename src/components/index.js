@@ -1,3 +1,3 @@
 export * from './Calculator';
-export * from './NumButton';
+export * from './NumpadButton';
 export * from './InputDisplay';
