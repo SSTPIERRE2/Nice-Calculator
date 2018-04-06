@@ -7,7 +7,7 @@ import { NumpadButton } from '../components';
  * @param  {Object} the numbers or symbols each button will represent
  * @return {Object}
  */
-const renderNumpadButtons = ({ display, onClick }) => {
+const renderNumpadButtons = ({ display, onClick, direction }) => {
 	let result;
 
 	if (Array.isArray(display)) {
@@ -21,7 +21,11 @@ const renderNumpadButtons = ({ display, onClick }) => {
 		});
 	}
 
-	return result;
+	return (
+		<div className={direction === 'vertical' ? 'row vertical' : 'row'}>
+			{result}
+		</div>
+	);
 };
 
 /**
