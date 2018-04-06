@@ -11,10 +11,13 @@ const renderNumpadButtons = ({ display, onClick }) => {
 	let result;
 
 	if (Array.isArray(display)) {
-		result = display.map((item) => {
+		result = display.map((item, index) => {
 			console.log(item);
 			return(
-				<div className={bootstrapColumns(bootstrapEqualColumns(display.length))}>
+				<div 
+					className={bootstrapColumns(bootstrapEqualColumns(display.length))}
+					key={index}
+				>
 					<NumpadButton display={item} onClick={() => onClick(item)} />
 				</div>
 			);
