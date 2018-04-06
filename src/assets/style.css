@@ -29,6 +29,10 @@
 
 }
 
+.numpad-text {
+	font-size: 3vw;
+}
+
 .vertical {
 	display: flex;
 	flex-direction: column;
