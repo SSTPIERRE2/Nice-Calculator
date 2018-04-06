@@ -1,3 +1,32 @@
 .centered {
 	margin: 0 auto;
 }
+
+.calculator-container {
+	margin: 20px auto 0px auto;
+	background-color: gray;
+	height: 400px;
+	width: 300px;
+}
+
+.input-display {
+	background-color: white;
+	margin: 1em;
+	height: 50px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.numpad-btn {
+	height: 50px;
+	width: 50px;
+	margin: 1em;
+}
+
+.numpad-btn:hover {
+	cursor: pointer;
+}
+
+.numpad-display {
+	margin: 1em;
+}
