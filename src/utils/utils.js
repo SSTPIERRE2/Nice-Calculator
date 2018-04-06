@@ -4,7 +4,7 @@ import { NumpadButton } from '../components';
 /**
  * @function renderNumpadButtons
  * @description renders some NumpadButton components, bro
- * @param  {Object the numbers or symbols each button will represent
+ * @param  {Object} the numbers or symbols each button will represent
  * @return {Object}
  */
 const renderNumpadButtons = ({ display, onClick }) => {
@@ -27,7 +27,7 @@ const renderNumpadButtons = ({ display, onClick }) => {
 /**
  * @function bootstrapEqualColumns
  * @description returns the number for even bootstrap columns
- * @param numberOfElements
+ * @param {number} numberOfElements
  * @type {number}
  */
 const bootstrapEqualColumns = (numberOfElements) => {
