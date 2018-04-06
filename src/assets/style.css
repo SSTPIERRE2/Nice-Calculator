@@ -17,6 +17,10 @@
 	justify-content: flex-end;
 }
 
+.input-text {
+	font-size: 4vw;
+}
+
 .numpad-btn {
 
 }
