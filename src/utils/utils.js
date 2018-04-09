@@ -46,7 +46,7 @@ const bootstrapEqualColumns = (numberOfElements) => {
  * @return {string}
  */
 const bootstrapColumns = (columnNumber) => {
-	return `col-sm-${columnNumber} col-md-${columnNumber} col-lg-${columnNumber}`
+	return `col-${columnNumber} col-sm-${columnNumber} col-md-${columnNumber} col-lg-${columnNumber}`
 }
 
 export { renderNumpadButtons };
