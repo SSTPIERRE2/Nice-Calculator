@@ -20,17 +20,18 @@ class Calculator extends Component {
 			nextDisplay = display + nextInput;
 		}
 
-		if (nextInput === 'DEL') {
-			nextDisplay = display.slice(0, display.length - 1);
-		}
-
 		if (display !== '') {
+			if (nextInput === 'DEL') {
+				nextDisplay = display.slice(0, display.length - 1);
+			}
+
 			if (lastChar === nextInput) {
 				// do nothing
 			}
 
 			if ((plusMinus.includes(lastChar) && plusMinus.includes(nextInput)) 
-				|| (timesDivPlus.includes(lastChar) && timesDivPlus.includes(nextInput))) {
+				|| ((timesDivPlus.includes(lastChar) && !timesDivPlus.includes(nextTolastChar)) 
+						&& timesDivPlus.includes(nextInput))) {
 					display.slice(0, display.length - 1) + nextInput;
 			}
 
