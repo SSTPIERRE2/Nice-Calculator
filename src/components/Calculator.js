@@ -9,54 +9,54 @@ class Calculator extends Component {
 	};
 
 	updateDisplay = (nextInput) => {
-		const initialNoOps = ['%', 'x', '+', '='];
+		let display = this.state.input;
+		let nextDisplay = display;
 		const plusMinus = ['+', '-'];
 		const timesDivPlus = ['x', '%', '+'];
-
-		let display = this.state.input;
 		const lastChar = display.slice(-1);
 		const nextTolastChar = display.slice(-2)[0];
 
-		if (display === '') {
-			if (!initialNoOps.includes(nextInput)) {
-				display = nextInput === '.'
-					? '0.'
-					: this.state.input + nextInput;
+		if (isNaN(nextInput)) {
+			nextDisplay = display + nextInput;
+		}
 
-				this.setState({ input: display });
+		if (nextInput === 'DEL') {
+			nextDisplay = display.slice(0, display.length - 1);
+		}
+
+		if (display !== '') {
+			if (lastChar === nextInput) {
+				// do nothing
 			}
-		} else if (noDupes.includes(nextInput) && display.slice(-1) === nextInput) {
-			// Can't input same symbol after itself
-		} else {
-			this.setState({
-				input: 
-				!isNaN(nextInput)
-					? display + nextInput
-					: lastChar === nextInput
-					? display
-					: (plusMinus.includes(lastChar) && plusMinus.includes(nextInput)) 
-						|| (timesDivPlus.includes(lastChar) && timesDivPlus.includes(nextInput))
-					? display.slice(0, display.length - 1) + nextInput
-					: lastChar === '-' !timesDivPlus.includes(nextTolastChar) && timesDivPlus.includes(nextInput)
-					? display + nextInput
-					: display
 
+			if ((plusMinus.includes(lastChar) && plusMinus.includes(nextInput)) 
+				|| (timesDivPlus.includes(lastChar) && timesDivPlus.includes(nextInput))) {
+					display.slice(0, display.length - 1) + nextInput;
+			}
 
+			if (lastChar === '-') {
 
-				(display === '')
-					? (!initialNoOps.includes(nextInput))
-						? (nextInput === '.')
-							? '0.'
-							: this.state.input + nextInput
-					: (noDupes.includes(nextInput) && display.slice(-1) === nextInput)
-						? this.state.input
-						: this.state.input + nextInput
-
-
-			});
+			}
 		}
 
 		
+
+
+		this.setState({
+			input: 
+			!isNaN(nextInput)
+				? display + nextInput
+				: nextInput === 'DEL'
+				? display.slice(0, display.length - 1)
+				: (lastChar === nextInput)
+				? display
+				: (plusMinus.includes(lastChar) && plusMinus.includes(nextInput)) 
+					|| (timesDivPlus.includes(lastChar) && timesDivPlus.includes(nextInput))
+				? display.slice(0, display.length - 1) + nextInput
+				: (lastChar === '-' && !timesDivPlus.includes(nextTolastChar) && timesDivPlus.includes(nextInput))
+				? display + nextInput
+				: display + nextInput
+		});
 	}
 
 	render () {

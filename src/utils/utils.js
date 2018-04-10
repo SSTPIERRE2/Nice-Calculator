@@ -2,14 +2,9 @@ import React from 'react';
 import { NumpadButton } from '../components';
 
 const calculateSolution = (input) => {
-	const noOps = ['DEL', '%', 'x', '+', '='];
 	let solution = '';
 
-	if (!noOps.includes(input)) {
-		solution = input;
-	}
-
-	return solution;
+	return input;
 };
 
 /**
