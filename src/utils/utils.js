@@ -1,6 +1,17 @@
 import React from 'react';
 import { NumpadButton } from '../components';
 
+const calculateSolution = (input) => {
+	const noOps = ['DEL', '%', 'x', '+', '='];
+	let solution = '';
+
+	if (!noOps.includes(input)) {
+		solution = input;
+	}
+
+	return solution;
+};
+
 /**
  * @function renderNumpadButtons
  * @description renders some NumpadButton components, bro
@@ -49,4 +60,4 @@ const bootstrapColumns = (columnNumber) => {
 	return `col-${columnNumber} col-sm-${columnNumber} col-md-${columnNumber} col-lg-${columnNumber}`
 }
 
-export { renderNumpadButtons };
+export { renderNumpadButtons, calculateSolution };
