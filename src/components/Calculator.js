@@ -28,15 +28,13 @@ class Calculator extends Component {
 					return item === ' ';
 				});
 			} else if (display.length > 1 && lastChar === '-' && !timesDivPlus.includes(nextTolastChar)) {
-				nextDisplay = `${display.slice(0, display.length - 1)} ${nextInput}`;
+				nextDisplay = `${display.slice(0, display.length - 1)}${nextInput}`;
 			} else if (!isNaN(lastChar)) {
-				nextDisplay = nextInput === '.'
-					? `${display}${nextInput}`
-					: `${display} ${nextInput}`;
+				nextDisplay = `${display}${nextInput}`;
 			} else if (['x', '%'].includes(lastChar) && nextInput === '-') {
-				nextDisplay = `${display} ${nextInput}`;
+				nextDisplay = `${display}${nextInput}`;
 			} else if (lastChar === '.') {
-				nextDisplay = `${display}0 ${nextInput}`
+				nextDisplay = `${display}0${nextInput}`
 			} else if (
 				((display.length > 1 
 					&& plusMinus.includes(lastChar) 
