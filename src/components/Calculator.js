@@ -13,50 +13,47 @@ class Calculator extends Component {
 		let nextDisplay = display;
 		const plusMinus = ['+', '-'];
 		const timesDivPlus = ['x', '%', '+'];
+		const symbols = ['x', '%', '+', '-'];
 		const lastChar = display.slice(-1);
 		const nextTolastChar = display.slice(-2)[0];
 
-		if (isNaN(nextInput)) {
-			nextDisplay = display + nextInput;
-		}
-
-		if (display !== '') {
+		if (!isNaN(nextInput)
+			|| display === '' && nextInput === '-') {
+				nextDisplay = display + nextInput;
+		} else if (display !== '') {
 			if (nextInput === 'DEL') {
-				nextDisplay = display.slice(0, display.length - 1);
+				nextDisplay.split('').reverse().some((item) => {
+					nextDisplay = nextDisplay.slice(0, nextDisplay.length - 1);
+
+					return item === ' ';
+				});
+			} else if (display.length > 1 && lastChar === '-' && !timesDivPlus.includes(nextTolastChar)) {
+				nextDisplay = `${display.slice(0, display.length - 1)} ${nextInput}`;
+			} else if (!isNaN(lastChar)) {
+				nextDisplay = nextInput === '.'
+					? `${display}${nextInput}`
+					: `${display} ${nextInput}`;
+			} else if (['x', '%'].includes(lastChar) && nextInput === '-') {
+				nextDisplay = `${display} ${nextInput}`;
+			} else if (lastChar === '.') {
+				nextDisplay = `${display}0 ${nextInput}`
+			} else if (
+				((display.length > 1 
+					&& plusMinus.includes(lastChar) 
+					&& plusMinus.includes(nextInput)
+					&& !timesDivPlus.includes(nextTolastChar))
+				|| (timesDivPlus.includes(lastChar) && timesDivPlus.includes(nextInput)))) {
+					nextDisplay = display.slice(0, display.length - 1) + nextInput;
 			}
 
-			if (lastChar === nextInput) {
-				// do nothing
-			}
-
-			if ((plusMinus.includes(lastChar) && plusMinus.includes(nextInput)) 
-				|| ((timesDivPlus.includes(lastChar) && !timesDivPlus.includes(nextTolastChar)) 
-						&& timesDivPlus.includes(nextInput))) {
-					display.slice(0, display.length - 1) + nextInput;
-			}
-
-			if (lastChar === '-') {
-
-			}
+			
 		}
 
 		
 
 
 		this.setState({
-			input: 
-			!isNaN(nextInput)
-				? display + nextInput
-				: nextInput === 'DEL'
-				? display.slice(0, display.length - 1)
-				: (lastChar === nextInput)
-				? display
-				: (plusMinus.includes(lastChar) && plusMinus.includes(nextInput)) 
-					|| (timesDivPlus.includes(lastChar) && timesDivPlus.includes(nextInput))
-				? display.slice(0, display.length - 1) + nextInput
-				: (lastChar === '-' && !timesDivPlus.includes(nextTolastChar) && timesDivPlus.includes(nextInput))
-				? display + nextInput
-				: display + nextInput
+			input: nextDisplay
 		});
 	}
 
