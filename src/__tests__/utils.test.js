@@ -24,7 +24,7 @@ describe('calculateSolution', () => {
 	});*/
 
 	test('empty rightHandSide just returns numbers', () => {
-		const expected = 1;
+		const expected = '1';
 		const actual = calculateSolution('1+2-1*4%2+');
 
 		expect(actual).toBe(expected);

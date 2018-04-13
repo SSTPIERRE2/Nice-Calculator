@@ -7,7 +7,7 @@ const filterWhiteSpaces = (arr) => {
  	});
 };
 
-const reduceEquation = ({ numbers, operators, index, solution }) => {
+/*const reduceEquation = ({ numbers, operators, index, solution }) => {
 	numbers.splice(index, 2, solution);
  	operators.splice(index, 1);
 
@@ -15,7 +15,7 @@ const reduceEquation = ({ numbers, operators, index, solution }) => {
 		numbers,
 		operators
 	};
-};
+};*/
 
 const calculateSolution = (input) => {
 	input = input.replace('x', '*');
