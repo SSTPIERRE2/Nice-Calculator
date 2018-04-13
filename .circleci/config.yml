@@ -50,10 +50,10 @@ workflows:
   
   -deploy:
     jobs:
-      - build-job
+      - build
       - deploy-job:
           requires:
-            - build-job
+            - build
           filters:
             branches:
               only: master
