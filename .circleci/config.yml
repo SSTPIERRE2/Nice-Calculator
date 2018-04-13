@@ -36,15 +36,24 @@ jobs:
       # run tests!
       - run: yarn test
 
-      - run:
-          name: Deploy Master to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
-      -deploy:
-          jobs:
+deploy-job:
+ docker:
+   - image: circleci/node:7.10
+ working_directory: ~/repo
+ steps:
+   - run:
+       name: Deploy Master to Firebase
+       command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+                 
+workflows:
+  version: 2
+  
+  -deploy:
+    jobs:
+      - build-job
+      - deploy-job:
+          requires:
             - build-job
-            - deploy-job:
-                requires:
-                  - build-job
-                filters:
-                  branches:
-                    only: master
+          filters:
+            branches:
+              only: master
