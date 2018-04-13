@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../assets/style.css';
-import { InputDisplay, NumpadButton } from './';
+import { InputDisplay } from './';
 import { renderNumpadButtons } from '../utils';
 
 class Calculator extends Component {
@@ -13,20 +13,20 @@ class Calculator extends Component {
 		let nextDisplay = display;
 		const plusMinus = ['+', '-'];
 		const timesDivPlus = ['x', '%', '+'];
-		const symbols = ['x', '%', '+', '-'];
 		const lastChar = display.slice(-1);
 		const nextTolastChar = display.slice(-2)[0];
 
 		if (!isNaN(nextInput)
-			|| display === '' && nextInput === '-') {
+			|| (display === '' && nextInput === '-')) {
 				nextDisplay = display + nextInput;
 		} else if (display !== '') {
 			if (nextInput === 'DEL') {
-				nextDisplay.split('').reverse().some((item) => {
+				nextDisplay = nextDisplay.split('').slice(0, nextDisplay.length - 1).join('');
+				/*nextDisplay.split('').reverse().some((item) => {
 					nextDisplay = nextDisplay.slice(0, nextDisplay.length - 1);
 
 					return item === ' ';
-				});
+				});*/
 			} else if (display.length > 1 && lastChar === '-' && !timesDivPlus.includes(nextTolastChar)) {
 				nextDisplay = `${display.slice(0, display.length - 1)}${nextInput}`;
 			} else if (!isNaN(lastChar)) {
