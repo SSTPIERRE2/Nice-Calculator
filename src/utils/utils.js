@@ -201,17 +201,13 @@ const renderNumpadButtons = ({ display, onClick, direction }) => {
 	if (Array.isArray(display)) {
 		result = display.map((item, index) => {
 			return (
-				<div key={index} className={bootstrapColumns(bootstrapEqualColumns(display.length))}>
-					<NumpadButton display={item} onClick={onClick} />
-				</div>
+				<NumpadButton key={index} display={item} onClick={onClick} />
 			);
 		});
 	}
 
 	return (
-		<div className={direction === 'vertical' ? 'row vertical' : 'row'}>
-			{result}
-		</div>
+		[result]
 	);
 };
 

@@ -62,19 +62,19 @@ class Calculator extends Component {
 		        <InputDisplay input={this.state.input} />
 
 		        <div className="row">
-		        	<div className="col-3 col-sm-3 col-md-3 col-lg-3">
+		        	<div className="col-3 col-sm-3 col-md-3 col-lg-3 num-column">
 		        		{renderNumpadButtons({ display: [7, 4, 1, '.'], onClick: this.updateDisplay, direction: 'vertical' })}
 		        	</div>
 
-		        	<div className="col-3 col-sm-3 col-md-3 col-lg-3">
+		        	<div className="col-3 col-sm-3 col-md-3 col-lg-3 num-column">
 						{renderNumpadButtons({ display: [8, 5, 2, 0], onClick: this.updateDisplay, direction: 'vertical' })}
 					</div>
 
-					<div className="col-3 col-sm-3 col-md-3 col-lg-3">
+					<div className="col-3 col-sm-3 col-md-3 col-lg-3 num-column">
 						{renderNumpadButtons({ display: [9, 6, 3, '='], onClick: this.updateDisplay, direction: 'vertical' })}
 					</div>
 
-		        	<div className="col-3 col-sm-3 col-md-3 col-lg-3">
+		        	<div id="op-column" className="col-3 col-sm-3 col-md-3 col-lg-3">
 		        		{renderNumpadButtons({
 		        			display: ['DEL', '%', 'x', '-', '+'],
 		        			onClick: this.updateDisplay,
