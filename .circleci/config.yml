@@ -39,7 +39,7 @@ jobs:
   deploy-job:
    docker:
      - image: circleci/node:7.10
-   working_directory: ~/repo
+   working_directory: ./repo/nice-calculator
    steps:
      - run:
          name: Deploy Master to Firebase
