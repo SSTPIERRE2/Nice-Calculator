@@ -1,3 +1,3 @@
 export * from './Calculator';
 export * from './NumpadButton';
-export * from './InputDisplay';
+export { default as InputDisplay } from './InputDisplay';
