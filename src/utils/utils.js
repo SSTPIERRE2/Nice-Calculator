@@ -192,16 +192,24 @@ const calculateSolution = (input) => {
 /**
  * @function renderNumpadButtons
  * @description renders some NumpadButton components, bro
- * @param  {Object} the numbers or symbols each button will represent
- * @return {Object}
+ * @param {string} [display] the number or symbol each button will represent
+ * @param {Function} [onClick] default onClick functionality
+ * @param {Function} [evaluate] equals button functionality
+ * @return {Array}
  */
-const renderNumpadButtons = ({ display, onClick, direction }) => {
+const renderNumpadButtons = ({ display, onClick, evaluate }) => {
 	let result;
 
 	if (Array.isArray(display)) {
 		result = display.map((item, index) => {
 			return (
-				<NumpadButton key={index} display={item} onClick={onClick} />
+				<NumpadButton 
+					key={index} 
+					display={item} 
+					onClick={item === '='
+						? evaluate
+						: onClick} 
+				/>
 			);
 		});
 	}

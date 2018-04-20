@@ -3,40 +3,33 @@ import { calculateSolution } from '../utils';
 
 class InputDisplay extends Component {
 	state = {
-		error: ''
+		error: null
 	};
 
-	renderDisplay(input) {
-		const solution = calculateSolution(input);
-
-		if (solution === 'Cannot divide by zero' || solution === 'Bad expression') {
-			console.log(`${solution}`)
-			return '';
-		}
-
-		return solution;
-	}
-
 	render() {
-		const { input } = this.props;
-
+		const { input, solution, error } = this.props;
+		console.log(`hello solution ??? ${solution}`);
 		return (
 			<div className="input-display">
 
 				<div className="row">
 					<div className="col-12 col-sm-12 col-md-12 col-lg-12">
-						<span id="input-text">{input}</span>
+						<span id="input-text" style={{ color: (error) ? 'red' : '#000'}}>{input}</span>
 					</div>
 				</div>
 
 				<div className="row">
 					<div className="col-12 col-sm-12 col-md-12 col-lg-12">
-						<span id="solution-text">
-							{this.renderDisplay(input)}
+						<span id="solution-text" style={{ color: (error) ? 'red' : '#000'}}>
+							{solution}
 						</span>
 					</div>
 				</div>
 
+				<div 
+					id="error-display"
+					style={{ height: (error) ? '100%' : 0 }} 
+				/>
 			</div>
 		);
 	}
