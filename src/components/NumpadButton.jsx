@@ -1,14 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const NumpadButton = (props) => {
-	return (
-		<div 
-			className="numpad-btn" 
-			onClick={() => props.onClick ? props.onClick(props.display) : props.evaluate()}
-		>
-			<span className="numpad-text">{props.display}</span>
-		</div>
-	);
-}
+const propTypes = {
+  onClick: PropTypes.function,
+  display: PropTypes.string,
+  evaluate: PropTypes.function,
+};
+const defaultProps = {
+  onClick: undefined,
+  display: '',
+  evaluate: undefined,
+};
 
-export { NumpadButton };
+const NumpadButton = props => (
+  <div
+    className="numpad-btn"
+    onClick={() => (props.onClick ? props.onClick(props.display) : props.evaluate())}
+  >
+    <span className="numpad-text">{props.display}</span>
+  </div>
+);
+
+NumpadButton.propTypes = propTypes;
+NumpadButton.defaultProps = defaultProps;
+
+export default NumpadButton;

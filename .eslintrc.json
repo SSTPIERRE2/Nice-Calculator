@@ -11,6 +11,9 @@
     "jsx": true
   },
   "rules": {
-    "no-undef": 0
+    "no-undef": 0,
+    "no-static-element-interactions": 0,
+    "arrow-body-style": 0,
+    "no-nested-ternary": 0
   }
 }

@@ -1,18 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+
+html, body {
+  background: linear-gradient(to bottom right, rgb(191, 191, 191), rgb(239, 239, 239));
+  height: 100%;
+  font-family: 'Gugi', cursive;
+}
+
 .centered {
 	margin: 0 auto;
 }
 
 .container-fluid.calculator-container {
 	margin-top: 50px;
-	background-color: gray;
+	background-color: #000;
 	max-height: 70%;
 	max-width: 60%;
 	padding-top: 1em;
+  box-shadow: 1px 1px 5px 1px #000;
 }
 
 .input-display {
-	background-color: white;
-	height: 100px;
+	background-color: #000;
+  height: 100px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
@@ -40,11 +49,11 @@
 
 .numpad-btn:hover {
 	cursor: pointer;
-	box-shadow: 0px 1px 5px 1px #222121, inset -1px -5px 10px 1px #515151;
+	box-shadow: 0px 1px 5px 1px rgb(51, 51, 51), inset -1px -3px 5px 1px rgb(96, 96, 96);
 }
 
 .num-column {
-	background-color: rgb(96, 96, 96);
+	background-color: rgb(181, 172, 164);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -68,12 +77,13 @@
 }
 
 #op-column {
-	background-color: rgb(117, 117, 117);
+	background-color: rgb(245, 126, 0);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0;
+  color: #fff;
 }
 
 .numpad-display {
@@ -90,11 +100,6 @@
 	flex-direction: column;
 	flex-wrap: nowrap;
 	height: 100%;
-}
-
-.test {
-	display: flex;
-	flex-wrap: nowrap;
 }
 
 #error-display {

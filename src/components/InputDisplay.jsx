@@ -5,17 +5,17 @@ class InputDisplay extends Component {
   static propTypes = {
     input: PropTypes.string,
     solution: PropTypes.string,
-    error: PropTypes.string,
+    error: PropTypes.boolean,
   };
 
   static defaultProps = {
     input: '',
     solution: '',
-    error: null,
+    error: false,
   };
 
   state = {
-    error: null,
+    error: false,
   };
 
   render() {
@@ -26,13 +26,13 @@ class InputDisplay extends Component {
 
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12">
-            <span id="input-text" style={{ color: (error) ? 'red' : '#000' }}>{input}</span>
+            <span id="input-text" style={{ color: (error) ? 'red' : '#fff' }}>{input}</span>
           </div>
         </div>
 
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12">
-            <span id="solution-text" style={{ color: (error) ? 'red' : '#000' }}>
+            <span id="solution-text" style={{ color: (error) ? 'red' : '#fff' }}>
               {solution}
             </span>
           </div>
