@@ -23,14 +23,14 @@ const calculateSolution = (input) => {
   const operators = filterWhiteSpaces(input.split(/[0-9]+\.?[0-9]*/));
   let solution;
 
-  console.log(`calculating solution on ${input}`);
+  // console.log(`calculating solution on ${input}`);
 
   if (numbers.length === 1) {
     return '';
   }
 
   const findHighestPriorityOperator = (operators) => {
-    console.log(`finding highest priority operator of ${operators}`);
+    // console.log(`finding highest priority operator of ${operators}`);
     const orderOfOperations = {
       '*': 2,
       '%': 2,
@@ -44,19 +44,19 @@ const calculateSolution = (input) => {
     };
 
     operators.forEach((op, index) => {
-      console.log(`comparing operators: ${op} ${orderOfOperations[op]} vs highestPriorityOperator ${orderOfOperations[highestPriorityOperator.op]}`);
+      // console.log(`comparing operators: ${op} ${orderOfOperations[op]} vs highestPriorityOperator ${orderOfOperations[highestPriorityOperator.op]}`);
       if (orderOfOperations[op] > orderOfOperations[highestPriorityOperator.op]) {
         highestPriorityOperator = { op, index };
       }
     });
 
-    console.log(`highest priority operator is: ${JSON.stringify(highestPriorityOperator)}`);
+    // console.log(`highest priority operator is: ${JSON.stringify(highestPriorityOperator)}`);
     return highestPriorityOperator;
   };
 
   const calculateOne = ({ op, index }) => {
     const leftHandSide = Number(numbers[index]);
-    console.log(`hang on, is rightHandSide empty ? ${numbers[index + 1]} ${numbers[index + 1] === undefined}`);
+    // console.log(`hang on, is rightHandSide empty ? ${numbers[index + 1]} ${numbers[index + 1] === undefined}`);
     const rightHandSide = numbers[index + 1] === undefined ? undefined : Number(numbers[index + 1]);
     let solution = 0;
     console.log(`calculating one operation for ${op}, index ${index} on ${numbers}`);
@@ -81,7 +81,7 @@ const calculateSolution = (input) => {
     numbers.splice(index, 2, solution);
     operators.splice(index, 1);
 
-    console.log(`calculation step complete for op: ${leftHandSide} ${op} ${rightHandSide} = ${solution}, operators: ${operators} numbers: ${numbers}`);
+    // console.log(`calculation step complete for op: ${leftHandSide} ${op} ${rightHandSide} = ${solution}, operators: ${operators} numbers: ${numbers}`);
     return solution;
   };
 
@@ -100,7 +100,7 @@ const calculateSolution = (input) => {
       return 'Bad expression';
     }
   }
-  console.log(`solution is: ${solution}`);
+  // console.log(`solution is: ${solution}`);
 
   return solution;
 };
