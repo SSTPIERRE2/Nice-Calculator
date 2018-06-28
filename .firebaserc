@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "production": "nice-calculator",
+    "default": "nice-calculator"
+  }
+}

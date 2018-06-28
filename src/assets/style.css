@@ -1,22 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+
+html, body {
+  background: linear-gradient(to bottom right, rgb(191, 191, 191), rgb(239, 239, 239));
+  height: 100%;
+  font-family: 'Gugi', cursive;
+}
+
 .centered {
 	margin: 0 auto;
 }
 
 .container-fluid.calculator-container {
 	margin-top: 50px;
-	background-color: gray;
+	background-color: #000;
 	max-height: 70%;
 	max-width: 60%;
 	padding-top: 1em;
+  box-shadow: 1px 1px 5px 1px #000;
 }
 
 .input-display {
-	background-color: white;
-	height: 100px;
+	background-color: #000;
+  height: 100px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 	padding-right: 1em;
+	position: relative;
 }
 
 #input-text {
@@ -29,11 +39,51 @@
 }
 
 .numpad-btn {
-	margin: 10px;
+	padding: 0.5em 0em;
+	height: 100%;
+	width: 98%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .numpad-btn:hover {
 	cursor: pointer;
+	box-shadow: 0px 1px 5px 1px rgb(51, 51, 51), inset -1px -3px 5px 1px rgb(96, 96, 96);
+}
+
+.num-column {
+	background-color: rgb(181, 172, 164);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.col-3.num-column {
+	padding: 0;
+}
+
+.col-sm-3.num-column {
+	padding: 0;
+}
+
+.col-md-3.num-column {
+	padding: 0;
+}
+
+.col-lg-3.num-column {
+	padding: 0;
+}
+
+#op-column {
+	background-color: rgb(245, 126, 0);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0;
+  color: #fff;
 }
 
 .numpad-display {
@@ -42,6 +92,7 @@
 
 .numpad-text {
 	font-size: 3vw;
+	user-select: none;
 }
 
 .vertical {
@@ -51,7 +102,12 @@
 	height: 100%;
 }
 
-.test {
-	display: flex;
-	flex-wrap: nowrap;
+#error-display {
+	background-color: rgba(255, 53, 53, 0.4);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transition: all 1s;
 }
