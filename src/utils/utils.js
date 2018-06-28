@@ -19,7 +19,7 @@ const renderNumpadButtons = ({ display, onClick, direction }) => {
 	if (Array.isArray(display)) {
 		result = display.map((item) => {
 			return(
-				<div className={bootstrapColumns(bootstrapEqualColumns(display.length))}>
+				<div key={item} className={bootstrapColumns(bootstrapEqualColumns(display.length))}>
 					<NumpadButton display={item} onClick={() => onClick(item)} />
 				</div>
 			);

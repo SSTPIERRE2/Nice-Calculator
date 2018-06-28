@@ -1,11 +1,14 @@
+import React from 'react';
 import { renderNumpadButtons } from '../utils';
+import renderer from 'react-test-renderer';
 
 describe('renderNumpadButtons', () => {
 	test('it outputs something', () => {
 		const expected = [];
-		const actual = renderNumpadButtons({ display: [ 7, 8, 9 ], onClick: () => {} });
+		const actual = renderer.create(
+      renderNumpadButtons({ display: [ 7, 8, 9 ], onClick: () => {}, direction: 'vertical' })
+    ).toJSON();
 
-		expect(Array.isArray(actual)).toBe(true);
-		expect(actual.length).toBe(3);
+		expect(actual.children.length).toBe(3);
 	});
 });
