@@ -1,36 +1,41 @@
 import React from 'react';
 import { NumpadButton } from '../components';
 
+/**
+ * @function filterWhiteSpaces
+ * @description removes white spaces from an array
+ * @param  {Array} arr
+ * @return {Array}
+ */
 const filterWhiteSpaces = (arr) => {
   return arr.filter((item) => {
     return item !== '';
   });
 };
 
-/* const reduceEquation = ({ numbers, operators, index, solution }) => {
-  numbers.splice(index, 2, solution);
-  operators.splice(index, 1);
-
-  return {
-    numbers,
-    operators
-  };
-}; */
-
+/**
+ * @function calculateSolution
+ * @description calculates a mathematical solution using order of operations
+ * @param  {string} input
+ * @return {string}
+ */
 const calculateSolution = (input) => {
   input = input.replace('x', '*');
   const numbers = filterWhiteSpaces(input.split(/[+\-*%]/));
   const operators = filterWhiteSpaces(input.split(/[0-9]+\.?[0-9]*/));
   let solution;
 
-  // console.log(`calculating solution on ${input}`);
-
   if (numbers.length === 1) {
     return '';
   }
 
+  /**
+   * @function findHighestPriorityOperator
+   * @description finds the highest priority operator within an array of operators, using OOO
+   * @param  {Array}
+   * @return {Object} the operator and its index in the input array
+   */
   const findHighestPriorityOperator = (operators) => {
-    // console.log(`finding highest priority operator of ${operators}`);
     const orderOfOperations = {
       '*': 2,
       '%': 2,
@@ -44,22 +49,25 @@ const calculateSolution = (input) => {
     };
 
     operators.forEach((op, index) => {
-      // console.log(`comparing operators: ${op} ${orderOfOperations[op]} vs highestPriorityOperator ${orderOfOperations[highestPriorityOperator.op]}`);
       if (orderOfOperations[op] > orderOfOperations[highestPriorityOperator.op]) {
         highestPriorityOperator = { op, index };
       }
     });
 
-    // console.log(`highest priority operator is: ${JSON.stringify(highestPriorityOperator)}`);
     return highestPriorityOperator;
   };
 
+  /**
+   * @function calculateOne
+   * @description Calculates the solution to one operation (such as 2+2 or 5*2)
+   * @param  {string} op the operator of the operation
+   * @param  {number} index the index of the operator in the array of operators left to complete operations for
+   * @return {number}
+   */
   const calculateOne = ({ op, index }) => {
     const leftHandSide = Number(numbers[index]);
-    // console.log(`hang on, is rightHandSide empty ? ${numbers[index + 1]} ${numbers[index + 1] === undefined}`);
     const rightHandSide = numbers[index + 1] === undefined ? undefined : Number(numbers[index + 1]);
     let solution = 0;
-    console.log(`calculating one operation for ${op}, index ${index} on ${numbers}`);
 
     if (rightHandSide === undefined) {
       solution = leftHandSide;
@@ -81,7 +89,6 @@ const calculateSolution = (input) => {
     numbers.splice(index, 2, solution);
     operators.splice(index, 1);
 
-    // console.log(`calculation step complete for op: ${leftHandSide} ${op} ${rightHandSide} = ${solution}, operators: ${operators} numbers: ${numbers}`);
     return solution;
   };
 
@@ -89,6 +96,7 @@ const calculateSolution = (input) => {
     solution = input;
   }
 
+  // Calculate an operation for each operator input until calculations are complete
   while (operators.length !== 0) {
     solution = calculateOne(findHighestPriorityOperator(operators)).toString();
 
@@ -100,7 +108,6 @@ const calculateSolution = (input) => {
       return 'Bad expression';
     }
   }
-  // console.log(`solution is: ${solution}`);
 
   return solution;
 };
@@ -134,26 +141,5 @@ const renderNumpadButtons = ({ display, onClick, evaluate }) => {
     [result]
   );
 };
-
-/**
- * @function bootstrapEqualColumns
- * @description returns the number for even bootstrap columns
- * @param {number} numberOfElements
- * @type {number}
- */
-/* const bootstrapEqualColumns = (numberOfElements) => {
-  return 12 / numberOfElements;
-}; */
-
-/**
- * @function bootstrapColumns
- * @description returns class names for the bootstrap columns you want to support
- * @todo : add some way to control scaling of each column size i.e. col-sm-12 col-md-6 col-lg-3
- * @param  {number} columnNumber the column number you want to use for each column size
- * @return {string}
- */
-/* const bootstrapColumns = (columnNumber) => {
-  return `col-${columnNumber} col-sm-${columnNumber} col-md-${columnNumber} col-lg-${columnNumber}`
-}; */
 
 export { renderNumpadButtons, calculateSolution };

@@ -2,22 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  onClick: PropTypes.function,
-  display: PropTypes.string,
-  evaluate: PropTypes.function,
+  onClick: PropTypes.func,
+  display: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
+  evaluate: PropTypes.func,
 };
 const defaultProps = {
-  onClick: undefined,
+  onClick: () => {},
   display: '',
-  evaluate: undefined,
+  evaluate: () => {},
 };
 
-const NumpadButton = props => (
+/**
+ * @const NumpadButton
+ * @description A single button on the calculator. 
+ *   It could be a number or operator and run a given onClick function.
+ */
+const NumpadButton = ({ onClick, display, evaluate }) => (
   <div
     className="numpad-btn"
-    onClick={() => (props.onClick ? props.onClick(props.display) : props.evaluate())}
+    onClick={() => (onClick ? onClick(display) : evaluate())}
   >
-    <span className="numpad-text">{props.display}</span>
+    <span className="numpad-text">{display}</span>
   </div>
 );
 
